@@ -1,0 +1,47 @@
+<project xmlns="http://maven.apache.org/DECORATION/1.8.0" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/DECORATION/1.8.0 http://maven.apache.org/xsd/decoration-1.8.0.xsd">
+
+    <poweredBy>
+        <logo name="Sievent Monitoring" href="https://github.com/sievent-monitoring" img="images/github-logo-small.png" />
+    </poweredBy>
+
+    <skin>
+        <groupId>org.apache.maven.skins</groupId>
+        <artifactId>maven-fluido-skin</artifactId>
+        <version>1.7</version>
+    </skin>
+
+    <bannerRight>
+        <src>images/logo-64.png</src>
+    </bannerRight>
+
+    <custom>
+        <fluidoSkin>
+            <topBarEnabled>true</topBarEnabled>
+            <sideBarEnabled>false</sideBarEnabled>
+            <navBarStyle>navbar-inverse</navBarStyle>
+            <topBarIcon>
+                <name>Sievent Monitoring</name>
+                <alt>Sievent Monitoring</alt>
+                <href>/index.html</href>
+            </topBarIcon>
+        </fluidoSkin>
+    </custom>
+
+    <body>
+
+        <menu name="Concepts">
+            <item name="Monitoring layers" href="concepts/monitoring-layers.html"/>
+            <item name="Quality of service and alerting" href="concepts/quality-of-service-and-alerting.html"/>
+            <item name="Metric based vs Event based monitoring" href="concepts/metric-based-vs-event-based-monitoring.html"/>
+            <item name="Event management" href="concepts/event-management.html"/>
+            <item name="Enterprise monitoring" href="concepts/enterprise-monitoring.html"/>
+        </menu>
+
+        <menu name="User Guide">
+            <item name="Architecture of Sievent" href="user-guide/architecture-of-sievent.html"/>
+        </menu>
+
+    </body>
+
+</project>

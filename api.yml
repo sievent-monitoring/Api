@@ -1,0 +1,147 @@
+swagger: "2.0"
+info:
+  description: Sievent API description. 
+  version: "1.0.0"
+  title: Swagger REST for sievent api
+consumes:
+  - "application/json"
+produces:
+  - "application/json"
+basePath: "/api"
+
+
+definitions:
+  Category:
+    type: string
+    enum: &Category
+      - Infrastructure
+      - Applicative
+      - Business
+  SubCategory:
+    type: string
+    enum: &SubCategory
+      - Cpu
+      - Ram
+      - Disk
+      - Network
+      - Component
+      - Api
+      - Web
+      - Chain
+      - Process
+      - Function
+  Severity:
+    type: string
+    enum: &Severity
+      - Critical
+      - High
+      - Medium
+      - Low
+      - Informational
+  Origin:
+    type: string
+    enum: &Origin
+      - Alarm
+      - Sla
+      - Logs
+      - Agent
+      - Probe
+      - External
+  Status:
+    type: string
+    enum: &Status
+      - Open
+      - Closed
+      - Pending
+      - Cancelled      
+
+components:
+  schemas:
+    Alert:
+      type: object
+      required:
+        - application
+        - userMessage
+        - destination
+        - severity
+        - userMessage
+      properties:
+        timestamp :
+          type: integer
+          format : int64
+        application :
+          type: string
+        userMessage:
+          type: string
+        technicalMessage:
+          type: string
+        destination :
+          type: string
+        rightMask :
+          type: integer        
+        id :
+          type: string
+          format : uuid
+        severity :
+          type: string
+          enum: *Severity
+        category :
+          type: string
+          enum: *Category
+        subCategory :
+          type: string
+          enum: *SubCategory
+        subject:
+          type: string
+        tags :
+          type: string
+        origin :
+          type: string
+          enum: *Origin
+        status :
+          type: string
+          enum: *Status
+        version :
+          type: integer
+          format : int64
+        asset :
+          type: string
+
+paths:
+  /alert:
+    post:
+      summary: Raises a new alert.
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: alert
+          description: The alert to raise.
+          schema:
+            $ref: '#/components/schemas/Alert'
+      responses:
+        200:
+          description: "Successful : An alert is raised"
+          schema:
+            $ref: '#/components/schemas/Alert'
+  /alert/{id}:
+    patch:
+      summary: Updates an existing alert.
+      consumes:
+        - application/json
+      parameters:
+        - in: path
+          name: id
+          description: The unique identifier alert to update.
+          type: string
+          format : uuid
+        - in: body
+          name: alert
+          description: The alert to update.
+          schema:
+            $ref: '#/components/schemas/Alert'
+      responses:
+        200:
+          description: "Successful : An alert is raised"
+          schema:
+            $ref: '#/components/schemas/Alert'
